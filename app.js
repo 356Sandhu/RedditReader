@@ -5,8 +5,6 @@ let script = new SpeechSynthesisUtterance(
   "Hello My Friend, How are you? . ! . I hope you are doing well. ! Isn't it an exciting time to be alive?"
 );
 
-let script1 = new SpeechSynthesisUtterance("Welcome to Iceland.");
-
 const getPosts = async () => {
   const res = await fetch("https://www.reddit.com/.json");
   if (res.ok) console.log("response successful");
@@ -20,9 +18,11 @@ const getPosts = async () => {
 
 const createUtterances = (data) => {
   let utterances = [];
-  data.forEach((post) => {
+  data.forEach((post, i) => {
     const title = post.data.title;
-    const utterance = new SpeechSynthesisUtterance(title);
+    const utterance = new SpeechSynthesisUtterance(
+      `Post Number ${i}: ${title}`
+    );
     utterances.push(utterance);
   });
   return utterances;
@@ -35,4 +35,16 @@ const createUtterances = (data) => {
 //   return utterances;
 // };
 
-btn.addEventListener("click", () => {});
+const speakPosts = async () => {
+  const data = await getPosts();
+  let utterances = createUtterances(data);
+  console.log("utterances done.");
+  console.log(utterances.length);
+  console.log(synth.speaking);
+  console.log(utterances.pop());
+  while (utterances.length != 0) {
+    synth.speak(utterances.pop());
+  }
+};
+
+btn.addEventListener("click", speakPosts);

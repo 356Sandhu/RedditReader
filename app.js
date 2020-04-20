@@ -1,4 +1,6 @@
-const btn = document.getElementById("btn");
+const playbtn = document.getElementById("play");
+const pausebtn = document.getElementById("pause");
+const stopbtn = document.getElementById("stop");
 let synth = window.speechSynthesis;
 
 let script = new SpeechSynthesisUtterance(
@@ -47,4 +49,14 @@ const speakPosts = async () => {
   }
 };
 
-btn.addEventListener("click", speakPosts);
+const pauseSpeaking = () => {
+  synth.paused ? synth.resume() : synth.pause();
+};
+
+const stopSpeaking = () => {
+  if (synth.speaking) synth.cancel();
+};
+
+playbtn.addEventListener("click", speakPosts);
+pausebtn.addEventListener("click", pauseSpeaking);
+stopbtn.addEventListener("click", stopSpeaking);

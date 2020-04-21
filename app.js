@@ -8,7 +8,7 @@ let script = new SpeechSynthesisUtterance(
 );
 
 const getPosts = async () => {
-  const res = await fetch("https://www.reddit.com/.json");
+  const res = await fetch("https://www.reddit.com/r/writingprompts.json");
   if (res.ok) console.log("response successful");
   else console.log("response failed");
 
@@ -18,6 +18,8 @@ const getPosts = async () => {
   return data;
 };
 
+console.log(synth.getVoices());
+
 const createUtterances = (data) => {
   let utterances = [];
   data.forEach((post, i) => {
@@ -25,6 +27,7 @@ const createUtterances = (data) => {
     const utterance = new SpeechSynthesisUtterance(
       `Post Number ${i}: ${title}`
     );
+
     utterances.push(utterance);
   });
   return utterances;

@@ -3,17 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/78c0b3f9b5.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="style.css" />
     <title>Reddit Reader</title>
   </head>
   <body>
-    <div class="navbar">
-      <h1>Reddit Reader</h1>
-    </div>
     <div class="container">
-      <button class="btn" id="play">Fetch and Play</button>
-      <button class="btn" id="pause">Pause / Resume</button>
-      <button class="btn" id="stop">Stop!</button>
+      <nav class="navbar">
+        <h1>Reddit Reader</h1>
+        <div class="links">
+          <a class="subreddit-link currentSub" href="#"
+            ><i class="fas fa-newspaper"></i>WorldNews</a
+          >
+          <a class="subreddit-link" href="#"
+            ><i class="far fa-question-circle"></i>AskReddit</a
+          >
+          <a class="subreddit-link" href="#"
+            ><i class="fas fa-book"></i>WritingPrompts</a
+          >
+          <a class="subreddit-link" href="#"
+            ><i class="fas fa-landmark"></i>AskHistorians</a
+          >
+          <a class="subreddit-link" href="#"
+            ><i class="far fa-newspaper"></i>WorldNews</a
+          >
+          <a class="subreddit-link" href="#"
+            ><i class="far fa-question-circle"></i>AskReddit</a
+          >
+          <a class="subreddit-link" href="#"
+            ><i class="fas fa-book"></i>WritingPrompts</a
+          >
+          <a class="subreddit-link" href="#"
+            ><i class="fas fa-landmark"></i>AskHistorians</a
+          >
+        </div>
+      </nav>
+      <main>
+        <div class="controls">
+          <button class="btn" id="play">Fetch</button>
+          <button class="btn" id="pause">Pause</button>
+          <button class="btn" id="stop">Stop!</button>
+        </div>
+        <h2 id="posts-remaining">Queue is Empty.</h2>
+        <h2 id="currentPost"></h2>
+      </main>
     </div>
     <script src="app.js"></script>
   </body>

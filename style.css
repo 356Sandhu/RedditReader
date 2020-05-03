@@ -5,26 +5,49 @@
 }
 
 body {
-  display: flex;
   width: 100vw;
   height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: palevioletred;
-  color: white;
+  background-color: white;
+  color: black;
   overflow: hidden;
 }
 
 .navbar {
   height: 100%;
   width: 100%;
-  max-width: 350px;
-  background-color: blanchedalmond;
+  background-color: floralwhite;
   color: black;
-  padding: 1rem 1rem;
-  text-align: center;
+  padding: 1rem 2rem;
+  /* text-align: center; */
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.links {
+  padding-top: 2rem;
+}
+
+.links a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 0.75rem 0;
+}
+i {
+  margin-right: 1rem;
+}
+
+.links a:hover {
+  color: red;
 }
 
 .container {
+  display: grid;
+  grid-template-columns: 2.5fr 5fr;
   width: 100%;
   max-width: 1100px;
   height: 100%;
@@ -42,4 +65,44 @@ body {
   width: 4rem;
   border: none;
   background-color: aqua;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.controls .btn {
+  margin: 0 1rem;
+}
+
+#currentPost {
+  font-size: 1rem;
+  margin-top: 2rem;
+  max-width: 50%;
+  text-align: center;
+}
+
+.currentSub {
+  color: coral;
+  background: white;
+}
+
+.paused {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

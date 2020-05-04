@@ -13,28 +13,52 @@ body {
   overflow: hidden;
 }
 
-.navbar {
-  height: 100%;
+.container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  background-color: floralwhite;
+  max-width: 1100px;
+  height: 100%;
+  margin: auto;
+  /* padding: 5rem; */
+}
+.navbar {
+  text-emphasis: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   color: black;
   padding: 1rem 2rem;
   /* text-align: center; */
 }
 
-h1 {
+.navbar input {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  height: 2.5rem;
   font-size: 2rem;
 }
 
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  padding: 2rem 0;
+}
+
 .links {
+  text-align: center;
   padding-top: 2rem;
+  display: flex;
+  flex-direction: row;
 }
 
 .links a {
   display: block;
   color: black;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding: 0.75rem 0;
 }
 i {
@@ -43,16 +67,6 @@ i {
 
 .links a:hover {
   color: red;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 2.5fr 5fr;
-  width: 100%;
-  max-width: 1100px;
-  height: 100%;
-  margin: auto;
-  /* padding: 5rem; */
 }
 
 .container h1 {
@@ -85,8 +99,8 @@ main {
 }
 
 .currentSub {
-  color: coral;
-  background: white;
+  color: black;
+  background: coral;
 }
 
 .paused {

@@ -4,6 +4,7 @@ const stopbtn = document.getElementById("stop");
 const cPost = document.getElementById("currentPost");
 const links = document.querySelectorAll(".subreddit-link");
 const postsRemaining = document.getElementById("posts-remaining");
+const searchBar = document.getElementById("searchBar");
 
 let synth = window.speechSynthesis;
 
@@ -94,14 +95,35 @@ playbtn.addEventListener("click", speakPosts);
 pausebtn.addEventListener("click", pauseSpeaking);
 stopbtn.addEventListener("click", stopSpeaking);
 
+let curatedSubs = [];
+
 links.forEach((link) => {
   console.log("added event listeners");
+  curatedSubs.push(link.textContent);
   link.addEventListener("click", (e) => {
-    currentSubTitle = e.target.textContent;
-    currentSub.classList.remove("currentSub");
-    currentSub = e.target;
-    currentSub.classList.add("currentSub");
+    changeSub(e.target.textContent);
     console.log(`Changed to ${currentSubTitle}`);
     e.preventDefault();
   });
+});
+
+function changeSub(newSub) {
+  if (curatedSubs.includes(currentSub.textContent)) {
+    currentSub.classList.remove("currentSub");
+  }
+  currentSub = newSub;
+  currentSubTitle = currentSub.textContent;
+  if (curatedSubs.includes(currentSub.textContent)) {
+    currentSub.classList.add("currentSub");
+  }
+}
+
+searchBar.addEventListener("keydown", (e) => {
+  if (e.keyCode == 13) {
+    // currentSub.classList.remove("currentSub");
+    let sub = document.createElement("li");
+    sub.textContent = searchBar.value;
+    changeSub(sub);
+    console.log("changed to", currentSubTitle);
+  }
 });

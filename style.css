@@ -120,3 +120,14 @@ main {
     opacity: 1;
   }
 }
+
+.slidercontainer {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.slidercontainer button {
+  height: 3rem;
+  width: 10rem;
+  font-size: 0.75rem;
+}

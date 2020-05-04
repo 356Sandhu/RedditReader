@@ -5,6 +5,9 @@ const cPost = document.getElementById("currentPost");
 const links = document.querySelectorAll(".subreddit-link");
 const postsRemaining = document.getElementById("posts-remaining");
 const searchBar = document.getElementById("searchBar");
+const speedSlider = document.getElementById("speedSlider");
+const speedReset = document.getElementById("speedReset");
+const speakingDisplay = document.getElementById("speakingDisplay");
 
 let synth = window.speechSynthesis;
 
@@ -43,6 +46,7 @@ const getPosts = async (subreddit) => {
 // };
 
 let posts = [];
+let speed = 1;
 let currentSubTitle = "worldnews";
 let currentSub = links[0];
 
@@ -52,6 +56,7 @@ const speaker = () => {
   } else {
     let currentPost = posts.pop();
     let utterance = new SpeechSynthesisUtterance(currentPost);
+    utterance.rate = speed;
     synth.speak(utterance);
     cPost.textContent = currentPost;
     postsRemaining.textContent = posts.length;
@@ -101,7 +106,7 @@ links.forEach((link) => {
   console.log("added event listeners");
   curatedSubs.push(link.textContent);
   link.addEventListener("click", (e) => {
-    changeSub(e.target.textContent);
+    changeSub(e.target);
     console.log(`Changed to ${currentSubTitle}`);
     e.preventDefault();
   });
@@ -126,4 +131,15 @@ searchBar.addEventListener("keydown", (e) => {
     changeSub(sub);
     console.log("changed to", currentSubTitle);
   }
+});
+
+speedSlider.addEventListener("change", (e) => {
+  speed = speedSlider.value * 0.02;
+  speakingDisplay.textContent = speed;
+});
+
+speedReset.addEventListener("click", () => {
+  speed = 1;
+  speedSlider.value = 50;
+  speakingDisplay.textContent = speed;
 });

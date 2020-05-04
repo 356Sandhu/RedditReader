@@ -15,6 +15,13 @@
       <nav class="navbar">
         <h1>Reddit Reader</h1>
         <input type="text" id="searchBar" placeholder="Custom Subreddit" />
+        <div class="slidercontainer">
+          <label for="speedSlider"
+            >Change Speaking Speed (<span id="speakingDisplay">1</span>)</label
+          >
+          <input type="range" min="0" max="100" value="50" id="speedSlider" />
+          <button id="speedReset">Reset Speed to Default</button>
+        </div>
         <div class="links">
           <a class="subreddit-link currentSub" href="#"
             ><i class="fas fa-newspaper"></i>WorldNews</a
